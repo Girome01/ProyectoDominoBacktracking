@@ -14,7 +14,7 @@ public class ScriptPython {
             String s = null;
             int i = 0;
             List<List<String>> matriz = new ArrayList<>();
-            Process p = Runtime.getRuntime().exec("python C:\\Users\\pdina\\Documents\\GitHub\\ProyectoDominoBacktracking\\dominoGenerator\\dominoes.py "+n);
+            Process p = Runtime.getRuntime().exec("python C:\\Users\\pdina\\Documents\\GitHub\\ProyectoDominoBacktracking\\dominoes.py "+n);
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while( (s=in.readLine()) != null){
                 String str[] = s.split(" ");
