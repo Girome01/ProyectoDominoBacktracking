@@ -1,21 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectodomino;
 
-/**
- *
- * @author Gilberth
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ProyectoDomino {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        List<List<String>> matriz = new ArrayList<>();
+        matriz = ScriptPython.runScript(3);
+        for(List<String> fila : matriz){
+            System.out.println(fila);
+        }
+        
     }
     
 }
