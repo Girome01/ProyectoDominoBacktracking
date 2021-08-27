@@ -19,6 +19,7 @@ public class ScriptPython {
                 String str[] = s.split(" ");
                 matriz.add(Arrays.asList(str));
                 //System.out.println(matriz.get(i));
+                //prueba para gitignore
                 i++;
                 //System.out.println(s);
             }
