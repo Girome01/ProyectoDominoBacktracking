@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 public class ScriptPython {
     
-    
+
     public static int [] runScript(int n){
         try{
             String s = null;
@@ -33,8 +33,12 @@ public class ScriptPython {
             p.destroy();
             return result;
         }
-        catch(IOException ie){
-            System.out.println("Error: "+ie);
+        catch(IOException ex){
+            System.out.println("Error: "+ex);
+            return null;
+        } 
+        catch(NullPointerException ex){
+            System.out.println("Error: "+ex);
             return null;
         }
     }

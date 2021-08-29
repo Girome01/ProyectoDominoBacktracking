@@ -66,19 +66,14 @@ def create_puzzle(n):
             solution = solution + [ori]
         else:
             return False
-    #toFile("TableroDoble" + str(n), n, board, solution)
     toFile(n, board, solution)
 
-#def toFile(filename, n, board, solution):    
+   
 def toFile( n, board, solution):
-    #file = open("matriz.txt", "w")
-    #file.write(str(n) +  "\n")
-    #file.write("\n")
 
     #tablero
     for fila in board:
         print(*fila)
-    
     print(*solution)
     
 

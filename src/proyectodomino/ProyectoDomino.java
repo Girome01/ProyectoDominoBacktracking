@@ -11,7 +11,7 @@ public class ProyectoDomino {
         Tablero tablero = new Tablero();
         tablero.setVisible(true);
         /*
-        int n = 7;
+        int n = 10;
         int columna = n+2;
         int fila = 0;
         int [] matriz = ScriptPython.runScript(n);

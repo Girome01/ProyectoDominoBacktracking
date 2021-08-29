@@ -17,11 +17,18 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     private void initMatriz(int [] matriz, int n){
+        if(matriz == null)
+            return;
+        
         JLabel tile;
         int x = 0;
         int y = 0;
         int columna = n+2;
         int fila = 0;
+        
+        if(panel_matriz.getSize().height < n*50 || panel_matriz.getSize().width < n*50){
+            panel_matriz.setBounds(330, 30, (n+2)*50, (n+1)*50);
+        }
         
         for(int num : matriz){
             if(fila == columna){
@@ -45,7 +52,7 @@ public class Tablero extends javax.swing.JFrame {
             fila++;
             x += 50;
         }
-        //panel_matriz.setBounds(330, 30, 800, 670);
+        
     }
     
     
@@ -177,13 +184,9 @@ public class Tablero extends javax.swing.JFrame {
         panel_matriz.removeAll();
         panel_matriz.repaint();
         //elimina los tiles del todo
-        /*
-        for(JLabel tile : tiles){
-            tile.setVisible(false);
-            tile.
-        }*/
         tiles.clear();
         //habilita el botón generarMatriz
+        reset.setEnabled(false);
         generarMatriz.setEnabled(true);
     }//GEN-LAST:event_resetActionPerformed
 
