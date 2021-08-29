@@ -77,20 +77,10 @@ def toFile( n, board, solution):
 
     #tablero
     for fila in board:
-        print(*fila),
-        #for e in fila:
-            #file.write(str(e) + " ")
-            
-        #file.write("\n")
-    #file.write("\n")
-    '''
-    #otros datos
-    file.write(str(n) +  "\n")
-    file.write("\n")
-            
-    for i in solution:
-        file.write(str(i) + " ")
-    file.write("\n")'''
+        print(*fila)
+    
+    print(*solution)
+    
 
 
 
