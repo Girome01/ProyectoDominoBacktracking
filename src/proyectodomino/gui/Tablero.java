@@ -1,10 +1,11 @@
 package proyectodomino.gui;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
-import proyectodomino.ScriptPython;
-
-
+import proyectodomino.FileManager;
 
 public class Tablero extends javax.swing.JFrame {
 
@@ -16,41 +17,38 @@ public class Tablero extends javax.swing.JFrame {
         
     }
 
-    private void initMatriz(int [] matriz, int n){
+    private void initMatriz(int [][] matriz, int n){
         if(matriz == null)
             return;
         
         JLabel tile;
         int x = 0;
-        int y = 0;
-        int columna = n+2;
-        int fila = 0;
+        int y = 0;        
         
         if(panel_matriz.getSize().height < n*50 || panel_matriz.getSize().width < n*50){
-            panel_matriz.setBounds(330, 30, (n+2)*50, (n+1)*50);
+            panel_matriz.setBounds(330, 30, (n+3)*50, (n+2)*50);
         }
         
-        for(int num : matriz){
-            if(fila == columna){
-                fila = 0;
-                y += 50;
-                x = 0;
+        for(int[] fila : matriz){
+            for(int num : fila){
+                
+                tile = new javax.swing.JLabel();
+                if(num <= 6){
+                    tile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectodomino/gui/domino"+num+".png")));
+                }
+                else{
+                    tile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    tile.setText(String.valueOf(num));
+                }
+
+                panel_matriz.add(tile);
+                tile.setBounds(x, y, 50, 50);
+                tiles.add(tile);
+
+                x += 50;
             }
-            tile = new javax.swing.JLabel();
-            if(num <= 6){
-                tile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectodomino/gui/domino"+num+".png")));
-            }
-            else{
-                tile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                tile.setText(String.valueOf(num));
-            }
-            
-            panel_matriz.add(tile);
-            tile.setBounds(x, y, 50, 50);
-            tiles.add(tile);
-            
-            fila++;
-            x += 50;
+            y += 50;
+            x = 0;
         }
         
     }
@@ -172,8 +170,12 @@ public class Tablero extends javax.swing.JFrame {
     private void generarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarMatrizActionPerformed
         //lee el n de la matriz
         int n = (Integer)ingresarN.getValue();
-        //genera la matriz
-        initMatriz(ScriptPython.runScript(n), n);
+        try {
+            //genera la matriz
+            initMatriz(FileManager.getMatriz(n), n);
+        } catch (IOException ex) {
+            Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //bloquea el botón hasta que se resetee el programa
         generarMatriz.setEnabled(false);
         reset.setEnabled(true);

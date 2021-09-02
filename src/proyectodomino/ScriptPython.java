@@ -7,23 +7,24 @@ import java.time.LocalTime;
 public class ScriptPython {
     
 
-    public static int [] runScript(int n){
+    public static int[][] runScript(int n){
         try{
             String s = null;
-            int i = 0;  //indice del array resultado
-            int j = 0;  //indice de la fila que se está leyendo
-            int [] result = new int[(n+1)*(n+2)];
+            int i = 0;  //fila
+            int j = 0;  //columna
+            int result[][] = new int[n+1][n+2];
             Process p = Runtime.getRuntime().exec("python C:\\Users\\pdina\\Documents\\GitHub\\ProyectoDominoBacktracking\\dominoes.py "+n);
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
             
-            while( j < (n+1)){
+            while( i < (n+1)){
                 s = in.readLine();
                 String str[] = s.split(" ");
                 for(String num : str){
-                    result[i] = Integer.parseInt(num);
-                    i++;
-                }  
-                j++;
+                    result[i][j] = Integer.parseInt(num);
+                    j++;
+                }
+                j = 0;
+                i++;
             }
             s = in.readLine();
             System.out.println(LocalTime.now());
