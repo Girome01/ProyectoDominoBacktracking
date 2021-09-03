@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import proyectodomino.BruteForce;
 import proyectodomino.FileManager;
 
 public class Tablero extends javax.swing.JFrame {
 
-    
     private ArrayList<JLabel> tiles = new ArrayList<>();
+    private int [][] matriz = null;
+    private int n = 0;
+    private int [] solucion = null;
     
     public Tablero() {
         initComponents();
         
     }
 
-    private void initMatriz(int [][] matriz, int n){
+    private void initMatriz(){
         if(matriz == null)
             return;
         
@@ -50,7 +53,6 @@ public class Tablero extends javax.swing.JFrame {
             y += 50;
             x = 0;
         }
-        
     }
     
     
@@ -91,6 +93,11 @@ public class Tablero extends javax.swing.JFrame {
         backtracking.setContentAreaFilled(false);
         backtracking.setFocusPainted(false);
         backtracking.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectodomino/gui/button-09.png"))); // NOI18N
+        backtracking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backtrackingActionPerformed(evt);
+            }
+        });
         panel_menu.add(backtracking);
         backtracking.setBounds(110, 450, 110, 70);
 
@@ -169,10 +176,11 @@ public class Tablero extends javax.swing.JFrame {
 
     private void generarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarMatrizActionPerformed
         //lee el n de la matriz
-        int n = (Integer)ingresarN.getValue();
+        n = (Integer)ingresarN.getValue();
         try {
             //genera la matriz
-            initMatriz(FileManager.getMatriz(n), n);
+            matriz = FileManager.getMatriz(n);
+            initMatriz();
         } catch (IOException ex) {
             Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -191,6 +199,11 @@ public class Tablero extends javax.swing.JFrame {
         reset.setEnabled(false);
         generarMatriz.setEnabled(true);
     }//GEN-LAST:event_resetActionPerformed
+
+    private void backtrackingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtrackingActionPerformed
+        BruteForce.exec(matriz, solucion, n);
+        
+    }//GEN-LAST:event_backtrackingActionPerformed
 
     
     

@@ -9,9 +9,11 @@ public class ProyectoDomino {
     
     public static void main(String[] args) throws IOException {
         
-        Tablero tablero = new Tablero();
-        tablero.setVisible(true);
-        
+        //Tablero tablero = new Tablero();
+        //tablero.setVisible(true);
+        int [][] matriz = null;
+        int [] solucion = null;
+        BruteForce.exec(matriz, solucion, 3);
         /*
         int [][] matriz = FileManager.getMatriz(3);
         for(int [] fila : matriz){
@@ -31,20 +33,7 @@ public class ProyectoDomino {
             System.out.println("");
         }*/
         
-        //prueba generacion de matriz desde python
-        /*
-        int n = 3;
-        int [][] matriz = ScriptPython.runScript(n);
-        if (matriz == null){
-            return;
-        }
-        for(int[] fila : matriz){
-            for(int columna : fila){
-                System.out.print(columna+"\t");
-            }
-            System.out.println("");
-        }*/
-        
+                
     }
     
 }
