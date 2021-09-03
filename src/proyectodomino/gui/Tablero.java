@@ -174,7 +174,6 @@ public class Tablero extends javax.swing.JFrame {
         int n = (Integer)ingresarN.getValue();
         //genera la matriz
         initMatriz(ScriptPython.runScript(n), n);
-        System.out.println(ScriptPython.runScript(n));
         //bloquea el botón hasta que se resetee el programa
         generarMatriz.setEnabled(false);
         reset.setEnabled(true);

@@ -30,10 +30,6 @@ public class ScriptPython {
             System.out.println(LocalTime.now());
             System.out.println("Respuesta: "+s);
             
-            System.out.println(result.length);
-            System.out.println(result[0]);
-            System.out.println(result[1]);
-            
             in.close();
             p.destroy();
             return result;
