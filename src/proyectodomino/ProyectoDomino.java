@@ -1,19 +1,28 @@
 package proyectodomino;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import proyectodomino.gui.Tablero;
 
 public class ProyectoDomino {
 
     
     public static void main(String[] args) {
         
-        List<List<String>> matriz = new ArrayList<>();
-        matriz = ScriptPython.runScript(2);
-        for(List<String> fila : matriz){
-            System.out.println(fila);
-        }
+        Tablero tablero = new Tablero();
+        tablero.setVisible(true);
+        /*
+        int n = 10;
+        int columna = n+2;
+        int fila = 0;
+        int [] matriz = ScriptPython.runScript(n);
+        for(int num : matriz){
+            if(fila == columna){
+                fila = 0;
+                System.out.println("");
+            }
+            System.out.print(num+" ");
+            fila++;
+        }*/
         
     }
     
