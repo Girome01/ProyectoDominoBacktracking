@@ -14,6 +14,7 @@ public class ScriptPython {
             int j = 0;  //columna
             int result[][] = new int[n+1][n+2];
             Process p = Runtime.getRuntime().exec("python C:\\Users\\pdina\\Documents\\GitHub\\ProyectoDominoBacktracking\\dominoes.py "+n);
+            //Process p = Runtime.getRuntime().exec("python C:\\Users\\Gilberth\\Documents\\Github\\ProyectoDominoBacktracking\\dominoes.py "+n);
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
             
             while( i < (n+1)){
