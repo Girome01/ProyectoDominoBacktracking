@@ -9,11 +9,9 @@ public class ProyectoDomino {
     
     public static void main(String[] args) throws IOException {
         
-        //Tablero tablero = new Tablero();
-        //tablero.setVisible(true);
-        int [][] matriz = null;
-        int [] solucion = null;
-        BruteForce.exec(matriz, solucion, 3);
+        Tablero tablero = new Tablero();
+        tablero.setVisible(true);
+        
         /*
         int [][] matriz = FileManager.getMatriz(3);
         for(int [] fila : matriz){
