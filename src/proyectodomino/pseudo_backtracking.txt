@@ -1,0 +1,30 @@
+public Array buscarDomino( matriz, dominoEncontrados, fila, columna, solucion){
+	if( finalMatriz == fila {
+ 		return solucion
+	}
+            
+	matriz2 = matriz
+	if( columna++ < largo(fila){
+
+		if( matriz[fila][i] != -1 AND matriz[fila][i++] != -1){
+			if( verificarDomino(matriz[fila][i], matriz[fila][i++]) ){
+				matriz[fila][i] = -1, matriz[fila][i++] = -1;
+				solucion.add(0)
+				buscarDomino( matriz, dominoEncontrados, fila, columna++, solucion) 
+				matriz[fila][i] = matriz2[fila][i], matriz[fila][i++] = matriz2[fila][i++] 
+
+		}else if( matriz[fila][i] != -1 AND matriz[fila++][i] != -1){
+			if( verificarDomino(matriz[fila][i], matriz[fila++][i]) ){
+				matriz[fila][i] = -1, matriz[fila++][i] = -1;\
+				solucion.add(1)
+				buscarDomino( matriz, dominoEncontrados, fila, columna++, solucion)
+				matriz[fila][i] = matriz2[fila][i], matriz[fila++][i] = matriz2[fila++][i]
+
+			}else{
+				buscarDomino( matriz, dominoEncontrados, fila, columna++, solucion)     
+			}
+
+		}else{
+			buscarDomino( matriz, dominoEncontrados, fila++, 0, solucion) 
+	}
+}
