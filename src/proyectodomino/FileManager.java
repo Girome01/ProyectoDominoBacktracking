@@ -11,9 +11,12 @@ public class FileManager {
     
     public static int [][] getMatriz(int n) throws IOException{
         int [][] matriz = new int[n+1][n+2];
-        String s = FileManager.readFile(
+        /*String s = FileManager.readFile(
                         "C:\\Users\\pdina\\Documents\\GitHub\\ProyectoDominoBacktracking\\src"+
-                          "\\proyectodomino\\tableros\\TableroDoble"+n+".txt");
+                          "\\proyectodomino\\tableros\\TableroDoble"+n+".txt");*/
+        String s = FileManager.readFile(
+                        "C:\\Users\\Gilberth\\Documents\\Github\\ProyectoDominoBacktracking\\src"+
+                                "\\proyectodomino\\tableros\\TableroDoble"+n+".txt");
         
         String partes[] = s.split("\n");
         //System.out.print("Respuesta: ");
