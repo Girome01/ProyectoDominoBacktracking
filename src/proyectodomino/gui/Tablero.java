@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import proyectodomino.Backtracking;
 import proyectodomino.BruteForce;
 import proyectodomino.FileManager;
 
@@ -224,7 +225,15 @@ public class Tablero extends javax.swing.JFrame {
     }//GEN-LAST:event_resetActionPerformed
 
     private void backtrackingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtrackingActionPerformed
-        
+        int [] solucion = null;
+        //llama al algoritmo
+        Backtracking.exec(matriz, solucion, n);
+        //muestra la solucion
+        if(solucion!=null){
+            for(int i = 0; i < solucion.length; i++){
+                txt_respuesta.append(String.valueOf(solucion[i]));
+            }
+        }
     }//GEN-LAST:event_backtrackingActionPerformed
 
     private void fuerzaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuerzaBrutaActionPerformed
