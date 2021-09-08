@@ -30,6 +30,7 @@ public class BruteForce {
         bruteForce_aux(matriz, solucion, largo, n);
   
     }
+    //hacer las validaciones en funciones para no repetir código
     
     private static void bruteForce_aux(int [][] matriz, int [] solucion, int largo, int n){
         if (largo == 0){
@@ -122,6 +123,7 @@ public class BruteForce {
             System.out.println("-----------------------------");
         }
         else{
+            //
             solucion[largo-1] = 0;
             bruteForce_aux(matriz, solucion, largo-1, n);
             solucion[largo-1] = 1;
