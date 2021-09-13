@@ -18,17 +18,7 @@ public class BruteForce {
     public static void exec(int [][] matriz, int [] solucion, int n){   
         int largo = ((n+1)*(n+2))/2;    //cantidad de fichas
         solucion = new int[largo];
-        /*
-        for(int [] f : matriz){
-            for(int m : f){
-                System.out.print(m);
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-        */
         bruteForce_aux(matriz, solucion, largo, n);
-  
     }
     //hacer las validaciones en funciones para no repetir código
     
@@ -57,7 +47,7 @@ public class BruteForce {
             for(int num : solucion){
                 System.out.print(num);
             }
-            System.out.println("++++++++++++++++++++++++++++");
+            
             for(int [] f : matriz){
                 for(int numero : f){
                      f1 = -1;                 //datos de la ficha
@@ -114,13 +104,10 @@ public class BruteForce {
                 columna = 0;
                 fila++;
             }
-            //si llega hasta aqui es porque si es una solución, entonces la devuelve
+            //si llega hasta aqui es porque si es una solución, entonces la agrega al array de soluciones
             System.out.println("-----------------------------");
-            for(int num : solucion){
-                System.out.print(num);
-            }
-            System.out.println("");
-            System.out.println("-----------------------------");
+            
+            //
         }
         else{
             //

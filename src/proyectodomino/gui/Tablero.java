@@ -1,5 +1,6 @@
 package proyectodomino.gui;
 
+import java.awt.Dimension;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -29,9 +30,9 @@ public class Tablero extends javax.swing.JFrame {
         int x = 0;
         int y = 0;        
         
-        if(panel_matriz.getSize().height < n*50 || panel_matriz.getSize().width < n*50){
-            panel_matriz.setBounds(330, 30, (n+3)*50, (n+2)*50);
-        }
+        //cambia el tamaño del panel y modifica el scrollpane
+        panel_matriz.setBounds(0, 0, (n+3)*50, (n+2)*50);
+        panel_matriz.setPreferredSize(new Dimension((n+3)*50, (n+2)*50));    
         
         for(int[] fila : matriz){
             for(int num : fila){
@@ -62,6 +63,7 @@ public class Tablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        background = new javax.swing.JPanel();
         panel_menu = new javax.swing.JPanel();
         backtracking = new javax.swing.JButton();
         fuerzaBruta = new javax.swing.JButton();
@@ -71,11 +73,12 @@ public class Tablero extends javax.swing.JFrame {
         ingreseN = new javax.swing.JLabel();
         reset = new javax.swing.JButton();
         lbl_menu = new javax.swing.JLabel();
+        btn_next = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_respuesta = new javax.swing.JTextArea();
         lbl_respuesta = new javax.swing.JLabel();
+        scrollPane_matriz = new javax.swing.JScrollPane();
         panel_matriz = new javax.swing.JPanel();
-        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dominó");
@@ -85,7 +88,9 @@ public class Tablero extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("domino.png")).getImage());
         setMinimumSize(new java.awt.Dimension(1080, 850));
-        getContentPane().setLayout(null);
+
+        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(null);
 
         panel_menu.setBackground(new java.awt.Color(255, 255, 255));
         panel_menu.setLayout(null);
@@ -165,34 +170,71 @@ public class Tablero extends javax.swing.JFrame {
         panel_menu.add(lbl_menu);
         lbl_menu.setBounds(20, 0, 290, 700);
 
+        background.add(panel_menu);
+        panel_menu.setBounds(0, 0, 330, 810);
+
+        btn_next.setText("next");
+        background.add(btn_next);
+        btn_next.setBounds(660, 570, 79, 25);
+
         txt_respuesta.setColumns(20);
         txt_respuesta.setRows(5);
         jScrollPane1.setViewportView(txt_respuesta);
 
-        panel_menu.add(jScrollPane1);
-        jScrollPane1.setBounds(40, 730, 250, 50);
+        background.add(jScrollPane1);
+        jScrollPane1.setBounds(330, 600, 560, 70);
 
         lbl_respuesta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_respuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_respuesta.setText("Respuesta:");
-        panel_menu.add(lbl_respuesta);
-        lbl_respuesta.setBounds(50, 700, 230, 20);
+        lbl_respuesta.setText("Respuesta      ");
+        background.add(lbl_respuesta);
+        lbl_respuesta.setBounds(330, 570, 560, 20);
 
-        getContentPane().add(panel_menu);
-        panel_menu.setBounds(0, 0, 330, 810);
+        panel_matriz.setBackground(new java.awt.Color(0, 153, 153));
+        panel_matriz.setPreferredSize(new java.awt.Dimension(550, 500));
 
-        panel_matriz.setOpaque(false);
-        panel_matriz.setLayout(null);
-        getContentPane().add(panel_matriz);
-        panel_matriz.setBounds(330, 30, 800, 670);
+        javax.swing.GroupLayout panel_matrizLayout = new javax.swing.GroupLayout(panel_matriz);
+        panel_matriz.setLayout(panel_matrizLayout);
+        panel_matrizLayout.setHorizontalGroup(
+            panel_matrizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+        panel_matrizLayout.setVerticalGroup(
+            panel_matrizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
 
-        background.setBackground(new java.awt.Color(255, 255, 255));
-        background.setOpaque(true);
-        getContentPane().add(background);
-        background.setBounds(0, 0, 1920, 1080);
+        scrollPane_matriz.setViewportView(panel_matriz);
+
+        background.add(scrollPane_matriz);
+        scrollPane_matriz.setBounds(330, 30, 560, 490);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1233, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        //elimina los tiles del panel
+        panel_matriz.removeAll();
+        panel_matriz.repaint();
+        //elimina los tiles del todo
+        tiles.clear();
+        //habilita el botón generarMatriz
+        reset.setEnabled(false);
+        generarMatriz.setEnabled(true);
+        fuerzaBruta.setEnabled(false);
+        backtracking.setEnabled(false);
+    }//GEN-LAST:event_resetActionPerformed
 
     private void generarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarMatrizActionPerformed
         //lee el n de la matriz
@@ -211,18 +253,19 @@ public class Tablero extends javax.swing.JFrame {
         backtracking.setEnabled(true);
     }//GEN-LAST:event_generarMatrizActionPerformed
 
-    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        //elimina los tiles del panel 
-        panel_matriz.removeAll();
-        panel_matriz.repaint();
-        //elimina los tiles del todo
-        tiles.clear();
-        //habilita el botón generarMatriz
-        reset.setEnabled(false);
-        generarMatriz.setEnabled(true);
-        fuerzaBruta.setEnabled(false);
-        backtracking.setEnabled(false);
-    }//GEN-LAST:event_resetActionPerformed
+    private void fuerzaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuerzaBrutaActionPerformed
+        //almacena la solucion
+        int [] solucion = null;
+        //llama al algoritmo
+        BruteForce.exec(matriz, solucion, n);
+        //muestra la solucion
+        if(solucion!=null){
+            for(int i = 0; i < solucion.length; i++){
+                txt_respuesta.append(String.valueOf(solucion[i]));
+            }
+        }
+
+    }//GEN-LAST:event_fuerzaBrutaActionPerformed
 
     private void backtrackingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtrackingActionPerformed
         int [] solucion = null;
@@ -235,21 +278,6 @@ public class Tablero extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_backtrackingActionPerformed
-
-    private void fuerzaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuerzaBrutaActionPerformed
-        //almacena la solucion
-        int [] solucion = null;
-        //llama al algoritmo
-        BruteForce.exec(matriz, solucion, n);
-        //muestra la solucion
-        if(solucion!=null){
-            for(int i = 0; i < solucion.length; i++){
-                txt_respuesta.append(String.valueOf(solucion[i]));
-            }
-        }
-        
-        
-    }//GEN-LAST:event_fuerzaBrutaActionPerformed
 
     
     
@@ -286,8 +314,9 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
+    private javax.swing.JPanel background;
     private javax.swing.JButton backtracking;
+    private javax.swing.JButton btn_next;
     private javax.swing.JButton fuerzaBruta;
     private javax.swing.JButton generarMatriz;
     private javax.swing.JSpinner ingresarN;
@@ -299,6 +328,7 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JPanel panel_matriz;
     private javax.swing.JPanel panel_menu;
     private javax.swing.JButton reset;
+    private javax.swing.JScrollPane scrollPane_matriz;
     private javax.swing.JTextArea txt_respuesta;
     // End of variables declaration//GEN-END:variables
 }
