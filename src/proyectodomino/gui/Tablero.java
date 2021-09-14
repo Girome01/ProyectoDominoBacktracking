@@ -81,7 +81,7 @@ public class Tablero extends javax.swing.JFrame {
     
     private Color getRandomColor(){
         Random random = new Random();
-        return Color.getHSBColor(random.nextFloat(), random.nextFloat(), random.nextFloat());
+        return Color.getHSBColor(random.nextFloat(), (float)0.8, (float)0.8);
     }
     
     private void setTextSolution(String s){
@@ -307,12 +307,13 @@ public class Tablero extends javax.swing.JFrame {
         panel_matriz.repaint();
         //elimina los tiles del todo
         tiles.clear();
-        //habilita el botón generarMatriz
+        //habilita/deshabilita los botones
         reset.setEnabled(false);
         btn_next.setEnabled(false);
         generarMatriz.setEnabled(true);
         fuerzaBruta.setEnabled(false);
         backtracking.setEnabled(false);
+        currentSolution = 0;
     }//GEN-LAST:event_resetActionPerformed
 
     private void generarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarMatrizActionPerformed
