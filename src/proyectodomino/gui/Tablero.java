@@ -45,13 +45,14 @@ public class Tablero extends javax.swing.JFrame {
             for(int num : fila){
                 
                 tile = new javax.swing.JLabel();
-                if(num <= 6){
-                    tile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectodomino/gui/domino"+num+".png")));
-                }
-                else{
+                //if(num <= 6){
+                  //  tile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectodomino/gui/domino"+num+".png")));
+                //}
+                //else{
                     tile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                     tile.setText(String.valueOf(num));
-                }
+                    tile.setOpaque(true);
+                //}
 
                 panel_matriz.add(tile);
                 tile.setBounds(x, y, 50, 50);
@@ -74,7 +75,8 @@ public class Tablero extends javax.swing.JFrame {
     private void setTileColor(int fila, int columna, Color color){
         int maxColumna = n+2;
         int casilla = (maxColumna*fila)+columna;
-        tiles.get(casilla).setBorder(javax.swing.BorderFactory.createLineBorder(color, 4));
+        //tiles.get(casilla).setBorder(javax.swing.BorderFactory.createLineBorder(color, 4));
+        tiles.get(casilla).setBackground(color);
     }
     
     private Color getRandomColor(){
@@ -84,7 +86,7 @@ public class Tablero extends javax.swing.JFrame {
     
     private void setTextSolution(String s){
         txt_respuesta.setText(null);
-        txt_respuesta.append(s+"\n");
+        txt_respuesta.append("("+currentSolution+")  "+s+"\n");
     }
     
     private String toStringSolution(int [] solution){
