@@ -23,5 +23,13 @@ public class DominoFunctions {
         return current;
     }
     
+    public static int[] copyArray(int [] old){
+        int [] current = new int [old.length];
+        for(int i = 0; i < old.length; i++){
+            current[i] = old[i];
+        }
+        return current;
+    }
+    
        
 }
