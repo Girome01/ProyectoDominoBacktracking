@@ -347,15 +347,11 @@ public class Tablero extends javax.swing.JFrame {
     }//GEN-LAST:event_fuerzaBrutaActionPerformed
 
     private void backtrackingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtrackingActionPerformed
-        int [] solucion = null;
+
         //llama al algoritmo
-        Backtracking.exec(matriz, solucion, n);
-        //muestra la solucion
-        if(solucion!=null){
-            for(int i = 0; i < solucion.length; i++){
-                txt_respuesta.append(String.valueOf(solucion[i]));
-            }
-        }
+        soluciones = Backtracking.exec(matriz,n);
+        //pinta la solucion
+        paintSolution();
         //activa el boton para pasar respuestas
         btn_next.setEnabled(true);
     }//GEN-LAST:event_backtrackingActionPerformed
