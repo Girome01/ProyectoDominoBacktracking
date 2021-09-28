@@ -4,6 +4,7 @@ package proyectodomino;
 import java.io.IOException;
 import proyectodomino.gui.Tablero;
 
+
 public class ProyectoDomino {
 
     
@@ -11,6 +12,7 @@ public class ProyectoDomino {
         
         Tablero tablero = new Tablero();
         tablero.setVisible(true);
+       
         
         /*
         int [][] matriz = FileManager.getMatriz(3);

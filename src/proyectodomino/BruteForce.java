@@ -1,37 +1,23 @@
 
 package proyectodomino;
 
+import java.util.ArrayList;
+
 
 
 public class BruteForce {
-    
-    public static void printMatriz(int [][] matriz){
-        for (int[] fila : matriz) {
-            for (int n : fila) {
-                System.out.print(n + "\t");
-            }
-            System.out.println("");
-        }
-    }
-
-        
-    public static void exec(int [][] matriz, int [] solucion, int n){   
+    //static int impresiones = 0;
+            
+    public static ArrayList<int[]> exec(int [][] matriz, int n){   
         int largo = ((n+1)*(n+2))/2;    //cantidad de fichas
-        solucion = new int[largo];
-        /*
-        for(int [] f : matriz){
-            for(int m : f){
-                System.out.print(m);
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-        */
-        bruteForce_aux(matriz, solucion, largo, n);
-  
+        int [] solucion = new int[largo];
+        ArrayList<int[]> soluciones = new ArrayList<>();
+        bruteForce_aux(matriz, solucion, largo, n, soluciones);
+        return soluciones;
     }
+    //hacer las validaciones en funciones para no repetir código
     
-    private static void bruteForce_aux(int [][] matriz, int [] solucion, int largo, int n){
+    private static void bruteForce_aux(int [][] matriz, int [] solucion, int largo, int n, ArrayList<int[]> soluciones){
         if (largo == 0){
             //a continuación, se prueba la solución
             /*
@@ -51,12 +37,11 @@ public class BruteForce {
             int f1 = -1;                 //datos de la ficha
             int f2 = -1;
             int pos = 0;
-            
-            System.out.println("++++++++++++++++++++++++++++");
+            /*
             for(int num : solucion){
                 System.out.print(num);
             }
-            System.out.println("++++++++++++++++++++++++++++");
+            */
             for(int [] f : matriz){
                 for(int numero : f){
                      f1 = -1;                 //datos de la ficha
@@ -67,7 +52,7 @@ public class BruteForce {
                         switch(solucion[pos]){  
                             case 0:
                                 if(columna+1 >= maxColumna){
-                                    System.out.println("se salio de la columna: "+pos);
+                                    //System.out.println("se salio de la columna: "+pos);
                                     return;
                                 }
                                 f2 = matriz[fila][columna+1];
@@ -75,7 +60,7 @@ public class BruteForce {
                                 break;
                             case 1:
                                 if(fila+1 >= maxFila){
-                                    System.out.println("se salio de la fila: "+pos);
+                                    //System.out.println("se salio de la fila: "+pos);
                                     return;
                                 }
                                 f2 = matriz[fila+1][columna];
@@ -83,28 +68,14 @@ public class BruteForce {
                                 break;
                         } 
                         if(f2 == -1){
-                            System.out.println("no calzó bien: "+pos);
+                            //System.out.println("no calzó bien: "+pos);
                             return;
                         }
                         else{
-                            //revisa que la ficha no esté repetida
-                            switch (fichas[f1][f2]) {
-                                case -1:
-                                    System.out.println("la ficha se repite: "+pos);
-                                    return;
-                                case 0:
-                                    if(fichas[f2][f1] == -1){
-                                        System.out.println("se repite una ficha: "+pos);
-                                        return;
-                                    }
-                                    else{
-                                        fichas[f2][f1] = -1;
-                                    }   
-                                    break;
-                                case 1:
-                                    fichas[f1][f2] = -1;
-                                    break;
-                            }
+                            if (!DominoFunctions.comprobarFicha(f1, f2, fichas)){ //revisa que la ficha no esté repetida
+                                //la ficha se repite
+                                return;
+                            };
                         }
                         pos++;
                     }
@@ -113,19 +84,15 @@ public class BruteForce {
                 columna = 0;
                 fila++;
             }
-            //si llega hasta aqui es porque si es una solución, entonces la devuelve
-            System.out.println("-----------------------------");
-            for(int num : solucion){
-                System.out.print(num);
-            }
-            System.out.println("");
-            System.out.println("-----------------------------");
+            //System.out.println("-----------------------------");
+            int [] currentSolution = DominoFunctions.copyArray(solucion);
+            soluciones.add(currentSolution);
         }
         else{
             solucion[largo-1] = 0;
-            bruteForce_aux(matriz, solucion, largo-1, n);
+            bruteForce_aux(matriz, solucion, largo-1, n, soluciones);
             solucion[largo-1] = 1;
-            bruteForce_aux(matriz, solucion, largo-1, n);
+            bruteForce_aux(matriz, solucion, largo-1, n, soluciones);
         }
     }
     

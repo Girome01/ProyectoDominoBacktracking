@@ -14,6 +14,9 @@ public class FileManager {
         String s = FileManager.readFile(
                         "C:\\Users\\pdina\\Documents\\GitHub\\ProyectoDominoBacktracking\\src"+
                           "\\proyectodomino\\tableros\\TableroDoble"+n+".txt");
+        /*String s = FileManager.readFile(
+                        "C:\\Users\\Gilberth\\Documents\\Github\\ProyectoDominoBacktracking\\src"+
+                                "\\proyectodomino\\tableros\\TableroDoble"+n+".txt");*/
         
         String partes[] = s.split("\n");
         //System.out.print("Respuesta: ");

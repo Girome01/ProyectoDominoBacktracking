@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pdina/Documents/GitHub/ProyectoDominoBacktracking/src/proyectodomino/cosas.txt</file>
             <file>file:/C:/Users/pdina/Documents/GitHub/ProyectoDominoBacktracking/src/proyectodomino/DominoFunctions.java</file>
+            <file>file:/C:/Users/pdina/Documents/GitHub/ProyectoDominoBacktracking/src/proyectodomino/gui/Tablero.java</file>
             <file>file:/C:/Users/pdina/Documents/GitHub/ProyectoDominoBacktracking/src/proyectodomino/BruteForce.java</file>
+            <file>file:/C:/Users/pdina/Documents/GitHub/ProyectoDominoBacktracking/src/proyectodomino/Backtracking.java</file>
         </group>
     </open-files>
 </project-private>
