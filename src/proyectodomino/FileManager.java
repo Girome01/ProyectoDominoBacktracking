@@ -20,7 +20,7 @@ public class FileManager {
         
         String partes[] = s.split("\n");
         //System.out.print("Respuesta: ");
-        System.out.println(partes[n+4]);
+        //System.out.println(partes[n+4]);
         
         for(int i = 0; i < n+1; i++){ //i es fila
             String [] fila = partes[i+2].split(" ");

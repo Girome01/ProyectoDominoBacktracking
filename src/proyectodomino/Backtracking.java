@@ -16,7 +16,7 @@ public class Backtracking {
         return soluciones;
     }
     
-    private static void backtracking(int [][] matriz, int [] solucion, int [][] fichas, int pos, int columna, int fila){
+    private static void backtracking(int [][] matriz, int [] solucion, int [][] fichas, int pos, int columna, int fila, ArrayList<int[]> soluciones){
         if (pos >= solucion.length){
             /*System.out.println("--------------------------------------------------------------------------------------");
             for(int num : solucion){
