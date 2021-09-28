@@ -335,7 +335,11 @@ public class Tablero extends javax.swing.JFrame {
 
     private void fuerzaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuerzaBrutaActionPerformed
         //llama al algoritmo
-        soluciones = BruteForce.exec(matriz, n);       
+        double datetime1 = System.nanoTime();
+        soluciones = BruteForce.exec(matriz, n);
+        double datetime2 = System.nanoTime();
+        System.out.print("\n"+(datetime2-datetime1));
+               
         //pinta la solucion
         paintSolution();
         //activa el boton para pasar respuestas
